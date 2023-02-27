@@ -26,7 +26,6 @@ def api(args, target, data=None):
         ).text
     )
 
-
 def get_records(args):
     """grab all records, then find the correct one to replace."""
     all_records = api(args, "/dns/retrieve/" + args.domain)
@@ -70,7 +69,7 @@ def main(args):
     )
     args = parser.parse_args()
 
-    args.domain, args.config = args.domain[0], args.config[0]
+    args.domain, args.config = args.domain[0].lower(), args.config[0]
     args.fqdn = "{}.{}".format(args.subdomain, args.domain).strip(".")
 
     try:
